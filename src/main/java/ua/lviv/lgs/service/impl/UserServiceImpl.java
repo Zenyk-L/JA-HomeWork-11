@@ -1,5 +1,6 @@
 package ua.lviv.lgs.service.impl;
 
+import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.UserDao;
 import ua.lviv.lgs.dao.impl.UserDaoImpl;
 import ua.lviv.lgs.domain.User;
@@ -10,20 +11,29 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
+    private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
+    public  static UserService userServiceImpl;
+
     private UserDao userDao;
 
     public UserServiceImpl()  {
         try {
             userDao = new UserDaoImpl();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
+    }
+
+    public  static UserService getUserService(){
+        if (userServiceImpl == null)
+            userServiceImpl = new UserServiceImpl();
+        return userServiceImpl;
     }
 
     @Override
@@ -49,5 +59,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> readAll() {
         return userDao.readAll();
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
     }
 }

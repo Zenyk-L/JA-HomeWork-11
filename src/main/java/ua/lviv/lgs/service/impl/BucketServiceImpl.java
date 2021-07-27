@@ -1,5 +1,6 @@
 package ua.lviv.lgs.service.impl;
 
+import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.dao.impl.BucketDaoImpl;
 import ua.lviv.lgs.domain.Bucket;
@@ -11,20 +12,30 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BucketServiceImpl implements BucketService {
+
+    private static Logger LOGGER = Logger.getLogger(BucketServiceImpl.class);
+    public static BucketService bucketServiceImpl;
+
     private BucketDao bucketDao;
 
     public BucketServiceImpl() {
         try {
             bucketDao = new BucketDaoImpl();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
+    }
+
+    public static BucketService getBucketService(){
+        if( bucketServiceImpl == null)
+            bucketServiceImpl = new BucketServiceImpl();
+        return bucketServiceImpl;
     }
 
 

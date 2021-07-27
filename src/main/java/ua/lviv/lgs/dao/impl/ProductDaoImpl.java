@@ -1,5 +1,6 @@
 package ua.lviv.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.ProductDao;
 import ua.lviv.lgs.domain.Product;
 import ua.lviv.lgs.utils.ConnectionUtils;
@@ -15,6 +16,8 @@ public class ProductDaoImpl implements ProductDao {
     private static String READ_BY_ID = "select * from products where id =?";
     private static String UPDATE_BY_ID = "update products set name = ?, description = ?, price = ? where id = ?";
     private static String DELETE_BY_ID = "delete from products where id =?";
+
+    private static Logger LOGGER = Logger.getLogger(ProductDaoImpl.class);
 
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -37,7 +40,7 @@ public class ProductDaoImpl implements ProductDao {
             product.setId(resultSet.getInt(1));
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return product;
     }
@@ -58,7 +61,7 @@ public class ProductDaoImpl implements ProductDao {
             product = new Product(id, name, description, price);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return product;
     }
@@ -73,7 +76,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(4, product.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return product;
@@ -86,7 +89,7 @@ public class ProductDaoImpl implements ProductDao {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
     }
 
@@ -106,7 +109,7 @@ public class ProductDaoImpl implements ProductDao {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
 
         return productRecords;
