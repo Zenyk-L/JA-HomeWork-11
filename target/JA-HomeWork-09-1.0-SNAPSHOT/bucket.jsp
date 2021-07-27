@@ -1,32 +1,21 @@
 <%--
   Created by IntelliJ IDEA.
   User: livch
-  Date: 22.06.2021
-  Time: 21:17
+  Date: 23.07.2021
+  Time: 16:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Cabinet</title>
+    <title>Bucket</title>
 </head>
 <body>
+
 <jsp:include page="header.jsp"></jsp:include>
 
-<h1>Welcome to the cabinet ${userEmail}</h1>
-<div class="container-fluid">
-    <div class="row">
+<h1>Bucket of Product</h1>
 
-        <div id="productCards"></div>
-
-
-
-
-
-    </div>
-
-
-</div>
 
 <jsp:include page="footer.jsp"></jsp:include>
 
@@ -44,6 +33,6 @@
         src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="js/header.js"></script>
-<script src="js/cabinet.js"></script>
+
 </body>
 </html>
