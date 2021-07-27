@@ -8,6 +8,9 @@ import ua.lviv.lgs.service.ProductService;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -59,5 +62,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> readAll() {
         return productDao.readAll();
+    }
+
+    @Override
+    public Map<Integer, Product> readAllMap() {
+        return readAll().stream().collect(Collectors.toMap(Product::getId, Function.identity()));
     }
 }

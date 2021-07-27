@@ -4,9 +4,7 @@ import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.dao.impl.BucketDaoImpl;
 import ua.lviv.lgs.domain.Bucket;
-import ua.lviv.lgs.domain.Product;
 import ua.lviv.lgs.service.BucketService;
-import ua.lviv.lgs.service.ProductService;
 
 import java.sql.SQLException;
 import java.util.List;

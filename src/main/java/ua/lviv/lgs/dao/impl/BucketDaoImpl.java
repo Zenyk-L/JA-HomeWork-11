@@ -1,11 +1,9 @@
 package ua.lviv.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.domain.Bucket;
 import ua.lviv.lgs.utils.ConnectionUtils;
-
-import org.apache.log4j.Logger;
-
 
 import java.sql.*;
 import java.util.ArrayList;

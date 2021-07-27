@@ -6,8 +6,11 @@ import ua.lviv.lgs.dto.UserLogin;
 import ua.lviv.lgs.service.UserService;
 import ua.lviv.lgs.service.impl.UserServiceImpl;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
@@ -30,6 +33,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("userId", user.getId());
+            session.setAttribute("role", user.getRole().toString());
 
             UserLogin userLogin = new UserLogin();
             userLogin.destinationUrl = "cabinet.jsp";

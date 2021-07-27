@@ -1,5 +1,6 @@
 package ua.lviv.lgs.dao.impl;
 
+import org.apache.log4j.Logger;
 import ua.lviv.lgs.dao.UserDao;
 import ua.lviv.lgs.domain.User;
 import ua.lviv.lgs.utils.ConnectionUtils;
@@ -10,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
 
 public class UserDaoImpl implements UserDao {
     private static String READ_ALL = "select * from users";
