@@ -14,22 +14,22 @@ public class RegistrationServlet extends HttpServlet {
     private UserService userService = UserServiceImpl.getUserService();
 
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-         String firstName = request.getParameter("firstName");
-         String lastName = request.getParameter("lastName");
-         String email = request.getParameter("email");
-         String password = request.getParameter("password");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
 
+        if (!email.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty()) {
+            userService.create(new User(email, firstName, lastName,  UserRole.USER.toString(), password));
 
-         if (!email.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty()){
-             userService.create(new User(firstName,lastName,email, UserRole.USER.toString(), password));
-         } else request.getRequestDispatcher("registration.jsp").forward(request,response);
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("Success");
+        }
 
-         request.setAttribute("email", email);
-         request.getRequestDispatcher("cabinet.jsp").forward(request,response);
     }
 }
