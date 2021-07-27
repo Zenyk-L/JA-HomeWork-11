@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JA-HomeWork-07" />
+        <module name="JA-HomeWork-08" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="JA-HomeWork-07" target="1.8" />
+      <module name="JA-HomeWork-08" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
